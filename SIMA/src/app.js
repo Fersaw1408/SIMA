@@ -1,24 +1,21 @@
 const express = require("express");
- 
+
 const app = express();
- 
+
 const usuariosRoutes = require("./routes/usuarios.routes");
- 
- 
-// Permite recibir datos JSON
+const medidoresRoutes = require("./routes/medidores.routes");
+const lecturasRoutes = require("./routes/lecturas.routes");
+
 app.use(express.json());
- 
- 
-// Ruta principal de usuarios
+
 app.use("/usuarios", usuariosRoutes);
- 
- 
-// Ruta de prueba
+app.use("/medidores", medidoresRoutes);
+app.use("/lecturas", lecturasRoutes);
+
 app.get("/", (req, res) => {
     res.json({
         mensaje: "API SIMA funcionando"
     });
 });
- 
- 
+
 module.exports = app;
